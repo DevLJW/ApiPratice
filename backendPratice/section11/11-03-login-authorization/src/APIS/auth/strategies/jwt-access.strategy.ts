@@ -1,4 +1,4 @@
-import { PassportStrategy } from '@nestjs/passport';
+import { PassportStrategy} from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 
 export class JwtAccessStrategy extends PassportStrategy(Strategy, 'access') {
@@ -14,7 +14,7 @@ export class JwtAccessStrategy extends PassportStrategy(Strategy, 'access') {
             //     return accessToken;
             // }, // accessToken 넣어주기
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            secretOrkey: '나의비밀번호',
+            secretOrkey:"나의비밀번호",
 
             // context 안의 req에 user라는 이름으로 email과 id 정보가 담긴
             // 객체를 user 안으로 return 되는 것입니다 (passport에서 user를 자동으로 만들어 주기에, 바꿀 수 없습니다).
