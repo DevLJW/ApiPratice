@@ -26,5 +26,5 @@ export class CreateProductInput {
     productCategoryId: string;
 
     @Field(() => [String])
-    productTags: DeepPartial<ProductTag[]>;
+    productTags: DeepPartial<string[]>;
 }

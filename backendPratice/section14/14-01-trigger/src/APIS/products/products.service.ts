@@ -67,7 +67,9 @@ export class ProductsService {
 
         //  2-2 상품태그 등록
 
+        // 현재 새로운태그
         const tagNames = productTags.map((el) => el.replace('#', '')); //   ["전자제품", "영등포","컴퓨터"]
+        // 기존 태그 가져오기
         const prevTags = await this.productsTagsService.findByNames({
             //  [{id:"전자제품ID",name:"전자제품"}]
             tagNames,
@@ -78,12 +80,16 @@ export class ProductsService {
             const isExists = prevTags.find((prevel) => el === prevel.name); //같은 데이터 뽑기
             if (!isExists)
                 //  같은 값이 없다면,
-                temp.push({ name: el }); //[{키:값},{키:값}]형태로 푸쉬[{}]
+                temp.push({ name: el }); //[{키:값},{키:값}]형태로 푸쉬[{}] [{name:"1"},{name:"2"},{name:"3"}]
         });
 
         const newTags = await this.productsTagsService.bulkInsert({
             names: temp,
         });
+        console.log('prevTags');
+        console.log(prevTags);
+        console.log('new');
+        console.log(newTags);
         const tags = [...prevTags, ...newTags.identifiers]; // 태그합치기
 
         const result2 = await this.productsRepository.save({
@@ -166,9 +172,10 @@ export class ProductsService {
 
         const temp = [];
         tagNames.forEach((el) => {
+            // 새로 등록하려는 태그
             const isExists = prevTags.find((prevel) => el === prevel.name); //같은 데이터 뽑기
             if (!isExists)
-                //  같은 값이 없다면,
+                //  같은 값이 없다면 새로운태그니까 추가하기,
                 temp.push({ name: el }); //[{키:값},{키:값}]형태로 푸쉬[{}]
         });
 
