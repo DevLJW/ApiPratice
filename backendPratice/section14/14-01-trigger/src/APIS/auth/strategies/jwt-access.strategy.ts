@@ -24,7 +24,7 @@ export class JwtAccessStrategy extends PassportStrategy(Strategy, 'access') {
     //  성공시, validate()가 실행된다. 토큰을 열었을때 나오는값(userid)가 payload에 들어오게 된다.
     validate(payload) {
         return {
-            //context로 반환된다.
+            // resolver의 @context로 반환된다.
             id: payload.sub,
         };
     }

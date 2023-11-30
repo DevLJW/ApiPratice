@@ -7,6 +7,7 @@ import { JwtAccessStrategy } from './strategies/jwt-access.strategy';
 import { JwtRefreshStrategy } from './strategies/jwt-refresh.strategy';
 
 @Module({
+    //  UsersModule에서 내보낸 UsersService Provider 사용
     imports: [UsersModule, JwtModule.register({})], //접근할 DB 테이블 작성하기, JWT모듈안에는 서비스도 내장되어있어서 서비스를 내장받을수 있다.
     providers: [
         AuthResolver,
