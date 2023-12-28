@@ -3,6 +3,8 @@ import { Request, Response } from 'express';
 export interface IAuthUser {
     user?: {
         id: string;
+        accessToken?: string;
+        refreshToken?: string;
     };
 }
 

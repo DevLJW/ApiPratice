@@ -9,6 +9,7 @@ async function bootstrap() {
     app.useGlobalPipes(new ValidationPipe());
     app.useGlobalFilters(new HttpExceptionFilter()); //에러가 발생시 해당파일의 코드실행
     app.use(graphqlUploadExpress());
+    // app.use(cookieParser());
     await app.listen(3000);
 }
 bootstrap();

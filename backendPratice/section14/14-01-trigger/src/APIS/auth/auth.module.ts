@@ -5,6 +5,7 @@ import { JwtModule } from '@nestjs/jwt/dist';
 import { UsersModule } from '../users/users.module';
 import { JwtAccessStrategy } from './strategies/jwt-access.strategy';
 import { JwtRefreshStrategy } from './strategies/jwt-refresh.strategy';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
 
 @Module({
     //  UsersModule에서 내보낸 UsersService Provider 사용

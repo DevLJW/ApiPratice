@@ -24,10 +24,11 @@ export class UsersResolver {
     //  API 요청이 들어오면 UseGuards(인가)가 먼저 실행된다. 그후 성공하면 아래로직 실패면 에러가 뜬다.
     @UseGuards(GqlAuthGuard('access')) //인가하기전 검증하는 라이브러리
     @Query(() => User)
-    fetchUser(@Context() context: IContext): string {
+    fetchUser(@Context() context: IContext): Promise<User> {
         //내 정보 가져오기
-        console.log(context.req.user);
+        const id = context.req.user.id;
+        //User 타입으로 데이터 반환 해주기 서비스만들어서 디비접근필요
 
-        return '인가에 성공 하셨습니다.';
+        return this.usersService.fetchUser({ id });
     }
 }

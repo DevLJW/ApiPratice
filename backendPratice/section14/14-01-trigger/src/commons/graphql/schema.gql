@@ -2,13 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Board {
-  number: Int!
-  writer: String!
-  title: String!
-  contents: String!
-}
-
 type ProductSaleslocation {
   id: String!
   address: String!
@@ -54,7 +47,7 @@ type Product {
 }
 
 type Query {
-  fetchBoards: [Board!]
+  fetchBoards: String!
   fetchProducts: [Product!]!
   fetchProduct(productId: String!): Product!
   fetchUser: User!
@@ -70,6 +63,7 @@ type Mutation {
   createUser(email: String!, password: String!, name: String!, age: Int!): User!
   login(email: String!, password: String!): String!
   restoreAccessToken: String!
+  logout: String!
 }
 
 input CreateBoardInput {

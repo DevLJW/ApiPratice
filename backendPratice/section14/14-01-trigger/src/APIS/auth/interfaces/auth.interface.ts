@@ -9,6 +9,7 @@ export interface IAuthServiceLogin {
 
 export interface IAuthServiceGetAccessToken {
     user: User | IAuthUser['user'];
+    context: IContext;
 }
 
 export interface IAuthServiceSetRefreshToken {
@@ -18,4 +19,9 @@ export interface IAuthServiceSetRefreshToken {
 
 export interface IAuthServiceRestoreAccessToken {
     user: IAuthUser['user'];
+    context: IContext;
+}
+
+export interface IAuthServiceLogout {
+    context: IContext;
 }

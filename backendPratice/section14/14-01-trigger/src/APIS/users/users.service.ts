@@ -3,6 +3,7 @@ import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import {
+    IAuthServiceFetchUser,
     IUsersServiceCreate,
     IUsersServiceFindOneByEmail,
 } from './interfaces/users-service.interfaces';
@@ -47,5 +48,9 @@ export class UsersService {
             name: name,
             age: age,
         });
+    }
+
+    async fetchUser({ id }: IAuthServiceFetchUser): Promise<User> {
+        return await this.usersRepository.findOne({ where: { id } });
     }
 }
